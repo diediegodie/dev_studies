@@ -1,4 +1,4 @@
-# Repositório de Estudos - Backend
+# Repositório de Estudos
 
 Este repositório reúne **anotações pessoais, resumos e estudos** relacionados ao universo do desenvolvimento backend.  
 O objetivo é servir como um espaço de aprendizado contínuo, organização de ideias e registro de conceitos importantes.
