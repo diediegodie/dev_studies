@@ -103,7 +103,7 @@ O GRAIL é uma tecnologia de armazenamento de dados da Dynatrace que permite a a
 (Página inicial do Dynatrace, onde os usuários podem acessar todas as funcionalidades da plataforma)
 
 ---
-![alt text](image-4.png)
+![alt text](img/image-4.png)
 ---
 Tudo dentro do Dynatrace é um "app", ou seja, cada funcionalidade é apresentada como um aplicativo dentro da plataforma, permitindo que os usuários acessem facilmente as ferramentas e recursos de monitoramento e análise de desempenho.
 
