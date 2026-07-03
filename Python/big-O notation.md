@@ -27,7 +27,7 @@ def get_last_element(arr):
 
 If the input array has 1,000,000 elements, the time taken to retrieve the first, middle, or last element will be the same as if the array had only 10 elements. The time complexity remains constant, O(1), regardless of the input size.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image.png)
+![alt text](img/image.png)
 
 ---
 
@@ -66,7 +66,7 @@ def sum_elements(arr):
 
 If the input array has 1,000,000 elements, the time taken to find the maximum value, search for a target value, or sum all elements will be directly proportional to the size of the input array. The time complexity is O(n), meaning that as the input size increases, the time taken to execute the algorithm increases linearly.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-1.png)
+![alt text](img/image-1.png)
 
 ---
 
@@ -100,7 +100,7 @@ If the input array has 1,000 elements, the time taken to sort the array using bu
 
 Notice that O(n²) algorithms can become inefficient for large input sizes, and alternative algorithms with better time complexity should be considered in such cases.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-2.png)
+![alt text](img/image-2.png)
 
 ---
 
@@ -134,7 +134,7 @@ def find_common_elements(arr1, arr2):
 
 With the matrix multiplication example, if matrix A has dimensions 100x200 and matrix B has dimensions 200x300, the time taken to multiply these matrices will be proportional to 100 * 300 = 30,000 operations. The time complexity is O(n*m), meaning that as the sizes of the input matrices increase, the time taken to execute the algorithm increases proportionally to the product of their sizes.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-2.png)
+![alt text](img/image-2.png)
 
 (Same graphic as O(n²) because it is a generalization of O(n²))
 
@@ -161,7 +161,7 @@ def matrix_multiply_cubic(A, B):
 
 This function multiplies two square matrices A and B of size n x n. The three nested loops iterate over the rows and columns of the matrices, resulting in a time complexity of O(n³). As the size of the input matrices increases, the time taken to execute the algorithm increases cubically (3x).
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-2.png)
+![alt text](img/image-2.png)
 
 The same graphic can be used for O(n³) as well, as it is a generalization of O(n²) and O(n * m). The key difference is that O(n³) has three nested loops, while O(n²) has two nested loops, and O(n*m) has two nested loops with different input sizes. All of them growth closely related to the size of the input data set, but O(n³) grows much faster.
 
@@ -189,7 +189,7 @@ def binary_search(arr, target):
 
 This function performs a binary search on a sorted array to find the index of a target value. The algorithm repeatedly divides the search interval in half, resulting in a time complexity of O(log n). As the size of the input array increases, the time taken to execute the algorithm increases logarithmically.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-3.png)
+![alt text](img/image-3.png)
 
 This algorithm is much more efficient than linear search (O(n)) for large input sizes, as it reduces the number of comparisons needed to find the target value.
 
@@ -237,7 +237,7 @@ In this function, the merge sort algorithm recursively divides the input array i
 
 The O(n log n) time complexity is more efficient than O(n²) algorithms for large input sizes, making it a preferred choice for sorting algorithms in many applications.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-4.png)
+![alt text](img/image-4.png)
 
 In best case scenarios, O(n log n) algorithms can perform better than O(n²) algorithms, especially for large input sizes. However, they may still be less efficient than O(n) or O(log n) algorithms for smaller input sizes.
 
@@ -272,7 +272,7 @@ def power_set(s):
 
 These functions demonstrate exponential time complexity, as the number of recursive calls grows exponentially with the input size. For example, calculating the 40th Fibonacci number using this recursive approach would require approximately 2^40 = 1,099,511,627,776 function calls.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-5.png)
+![alt text](img/image-5.png)
 
 Following this pattern, we have also O(3^n), O(4^n), and so on, which are also exponential time complexities. These algorithms become impractical for even moderately sized inputs due to their rapid growth in execution time.
 
@@ -304,7 +304,7 @@ def generate_permutations(arr):
 
 This function generates all possible permutations of a given list of elements. The number of permutations of n elements is n!, which results in a time complexity of O(n!). As the size of the input list increases, the time taken to execute the algorithm grows factorially.
 
-![alt text](NOTES/backend_studies%20(git)/Python/img/image-6.png)
+![alt text](img/image-6.png)
 
 In the best case scenario, O(n!) algorithms can still be impractical for even small input sizes due to their rapid growth in execution time. However, they may be necessary for certain problems that require generating all possible permutations or combinations of a set of elements.
 
