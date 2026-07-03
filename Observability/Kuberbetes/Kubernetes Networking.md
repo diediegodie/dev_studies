@@ -8,7 +8,7 @@ Como o Kubernetes é construído sobre o Linux, ele aproveita a pilha de rede su
 
 ## Kubernetes Networking Model (Modelo de Rede do Kubernetes)
 
-![alt text](img/image.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image.png)
 
 ## Kubernetes Networking Components (Componentes de Rede do Kubernetes)
 
@@ -28,9 +28,9 @@ Como o Kubernetes é construído sobre o Linux, ele aproveita a pilha de rede su
                 - *conntrack*: Para rastrear conexões de rede e garantir que as comunicações sejam mantidas corretamente.
 ```
 
-![alt text](img/image-1.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-1.png)
 
-![alt text](img/image-2.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-2.png)
 
 ## Kubernetes Networking Rules
 
@@ -38,15 +38,15 @@ Como o Kubernetes é construído sobre o Linux, ele aproveita a pilha de rede su
 
 2. *POD-TO-POD*: Todos os Pods podem se comunicar entre si, independentemente do nó em que estão hospedados. Isso é possível graças à rede de sobreposição (overlay network) que o Kubernetes implementa, permitindo que os Pods se comuniquem usando seus endereços IP exclusivos. Cada Pod recebe um endereço IP exclusivo, e o Kubernetes gerencia a comunicação entre os Pods usando uma rede de sobreposição, que pode ser implementada usando diferentes soluções de rede, como Flannel, Calico ou Weave.
 
-![alt text](img/image-3.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-3.png)
 
 3. *POD-TO-SERVICE*: Os serviços do Kubernetes fornecem um ponto de acesso estável para os Pods, permitindo que eles se comuniquem com outros Pods e serviços dentro do cluster. Os serviços podem ser expostos usando um endereço IP virtual ou um nome DNS, facilitando a comunicação entre os componentes do cluster. Os serviços do Kubernetes podem ser configurados para balancear a carga entre os Pods, garantindo que as solicitações sejam distribuídas de maneira eficiente.
 
-![alt text](img/image-4.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-4.png)
 
 4. *EXTERNAL-TO-SERVICE*: Os serviços do Kubernetes podem ser expostos para o mundo externo usando diferentes métodos, como LoadBalancer, NodePort ou Ingress. Isso permite que os usuários acessem os serviços do Kubernetes a partir de fora do cluster, facilitando a integração com outros sistemas e a exposição de aplicativos para os usuários finais.
 
-![alt text](img/image-5.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-5.png)
 
 *NOTA: Tudo que foi dito acima pode fazer parte de um Cluster. O Cluster é o ambiente onde os `nodes`, `pods`, `services` e outros componentes do Kubernetes operam. Ele é composto por um conjunto de nodes que executam os pods e serviços, e é gerenciado pelo plano de controle do Kubernetes. O Cluster é a unidade básica de implantação no Kubernetes, e é onde os aplicativos conteinerizados são executados e gerenciados. O Cluster pode ser implementado em diferentes ambientes, como nuvens públicas, privadas ou híbridas, e pode ser dimensionado para atender às necessidades de carga de trabalho dos aplicativos.*
 
@@ -135,11 +135,11 @@ Exemplo de um arquivo de configuração do CNI:
 
 Neste exemplo, o arquivo de configuração do CNI define uma rede chamada `my-cni-network` que usa o plugin de rede Flannel. Ele especifica as opções de IPAM para o plugin, incluindo o tipo de IPAM (`host-local`), o diretório de dados para armazenar as informações de rede, as rotas a serem configuradas e os intervalos de endereços IP a serem usados para os pods. O campo `mtu` define a unidade máxima de transmissão para a rede, que é importante para garantir a eficiência da comunicação entre os pods.
 
-![alt text](img/image-6.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-6.png)
 
 *NOTA: Kubernetes é um conjunto de ferramentas e tecnologias que permitem a orquestração e gerenciamento de aplicativos conteinerizados. Ele é amplamente utilizado para implantar, escalar e operar aplicativos em ambientes de nuvem, proporcionando uma plataforma robusta e flexível para o desenvolvimento e operação de aplicativos modernos.*
 
-![alt text](img/image-7.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-7.png)
 
 Na imagem acima, podemos ver a arquitetura do *container network interface (CNI)* do Kubernetes. O CNI é responsável por orquestrar as interfaces de rede para os contêineres em um cluster e alocar os endereços IP para os pods. Ele é composto por vários componentes, incluindo o *plugin de rede*, o *plugin de IPAM (IP Address Management - Gerenciamento de Endereços IP)* e o *daemon do CNI*.
 O *plugin de rede* é responsável por criar e configurar as interfaces de rede para os contêineres.
@@ -160,17 +160,17 @@ Juntos, esses componentes permitem que os contêineres se comuniquem entre si e 
 
 - **Headless Service**: Um tipo de serviço que não atribui um endereço IP virtual, permitindo que os pods sejam acessados diretamente usando seus endereços IP. Ele é usado para casos em que os pods precisam ser acessados diretamente, como em bancos de dados ou serviços de estado.
 
-![alt text](img/image-8.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-8.png)
 
 ## Services CIDR (Classless Inter-Domain Routing - Roteamento sem Classe)
 
 O *Service CIDR* é um intervalo de endereços IP que o Kubernetes usa para atribuir endereços IP aos serviços. Cada serviço recebe um endereço IP exclusivo do *Service CIDR*, e os pods que se comunicam com o serviço usam esse endereço IP para acessar o serviço. O *Service CIDR* é configurado no momento da criação do cluster e é usado para garantir que cada serviço tenha um *conjunto exclusivo de endereços IP* para os pods que se comunicam com ele. Isso é importante para evitar conflitos de endereços IP e garantir a comunicação eficiente entre os pods e os serviços dentro do cluster.
 
-![alt text](img/image-9.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-9.png)
 
 Abaixo um exemplo do `iptables` rules para um serviço do Kubernetes:
 
-![alt text](img/image-10.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-10.png)
 
 # Services NodePort
 
@@ -178,7 +178,7 @@ O *NodePort* é um tipo de serviço do Kubernetes que expõe um serviço em uma 
 
 O *NodePort* é configurado usando o campo `type: NodePort` no manifesto do serviço, e a porta específica é definida usando o campo `nodePort`.
 
-![alt text](img/image-11.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-11.png)
 
 O Kubernetes atribui automaticamente uma porta dentro do intervalo de portas definido para o *NodePort* (geralmente entre 30000 e 32767) quando um serviço é criado com o tipo *NodePort*. No entanto, os usuários também podem especificar uma porta específica dentro desse intervalo usando o campo `nodePort` no manifesto do serviço. Se a porta especificada já estiver em uso por outro serviço, o Kubernetes retornará um erro e solicitará que uma porta diferente seja escolhida.
 
@@ -188,7 +188,7 @@ O Kubernetes atribui automaticamente uma porta dentro do intervalo de portas def
 
 O *kube-proxy* é um componente do Kubernetes que é responsável por manter as regras de rede para os serviços do Kubernetes. Ele é executado em cada nó do cluster e é responsável por encaminhar o tráfego de rede para os pods corretos com base nas regras de rede definidas para os serviços. O *kube-proxy* suporta diferentes modos de operação, incluindo o modo *iptables*, que usa regras de firewall para encaminhar o tráfego, e o modo *IPVS*, que usa uma abordagem baseada em balanceamento de carga para encaminhar o tráfego. O *kube-proxy* é essencial para garantir a comunicação eficiente entre os serviços e os pods dentro do cluster Kubernetes.
 
-![alt text](img/image-12.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-12.png)
 
 # E se escolhermos "nomes" ao invés de "IPs"?
 
@@ -198,11 +198,11 @@ O Kubernetes suporta a comunicação entre os pods usando nomes de serviço em v
 
 O sistema de DNS interno do Kubernetes permite que os pods se comuniquem usando nomes de serviço em vez de endereços IP. Cada serviço no Kubernetes recebe um nome DNS único, e o sistema de DNS do Kubernetes resolve esses nomes para os endereços IP correspondentes dos serviços. Isso facilita a comunicação entre os pods e torna a configuração de rede mais flexível e gerenciável.
 
-![alt text](img/image-13.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-13.png)
 
 ## No final, todos esses componentes ficariam assim:
 
-![alt text](img/image-14.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-14.png)
 
 # Considerações
 
@@ -210,7 +210,7 @@ O sistema de DNS interno do Kubernetes permite que os pods se comuniquem usando 
 
 Pode ser usada para *controlar o tráfego* de rede entre os pods e serviços dentro do cluster. Ela permite que os administradores definam *regras de rede e firewall* para restringir ou permitir o tráfego entre os pods com base em critérios como rótulos, namespaces e portas. As políticas de rede são implementadas usando o recurso `NetworkPolicy` do Kubernetes, e podem ser usadas para melhorar a segurança e a segmentação da rede dentro do cluster.
 
-![alt text](img/image-15.png)
+![alt text](NOTES/backend_studies%20(git)/Observability/Kuberbetes/img/image-15.png)
 
 ## Ingress Controller and Gateway API controller
 
@@ -218,4 +218,4 @@ O *Ingress Controller* é um componente do Kubernetes que gerencia o tráfego de
 
 O *Gateway API controller* é uma implementação mais recente que fornece uma maneira mais flexível e extensível de gerenciar o tráfego de entrada, permitindo a definição de regras de roteamento mais complexas e a integração com diferentes soluções de balanceamento de carga e proxies. Ambos os controladores são usados para expor serviços do Kubernetes para o mundo externo e gerenciar o tráfego de entrada de maneira eficiente e segura.
 
-![alt text](img/image-16.png)
+![alt text](image-16.png)

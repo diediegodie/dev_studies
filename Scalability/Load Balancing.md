@@ -2,7 +2,7 @@
 
 A escalabilidade vertical, ou "scale up", é o processo de aumentar a capacidade de um único servidor ou máquina para lidar com uma carga de trabalho maior. Isso pode ser feito adicionando mais recursos, como CPU, memória RAM, armazenamento ou largura de banda, ao servidor existente.
 
-![Exemplo de escalabilidade vertical](img/image.png)
+![Exemplo de escalabilidade vertical](NOTES/backend_studies%20(git)/Scalability/img/image.png)
 
 A escalabilidade vertical deve ser pensada antes de tudo como uma solução de curto prazo, pois há um limite físico para o quanto um servidor pode ser melhorado. Além disso, a escalabilidade vertical pode levar a um ponto de falha único, onde se o servidor falhar, todo o sistema pode ficar indisponível. Ou seja, embora seja uma solução mais simples e rápida de implementar, a escalabilidade vertical pode não ser a melhor opção para sistemas que exigem alta disponibilidade e resiliência, pois ficam com os recursos limitados a um único servidor.
 
@@ -16,7 +16,7 @@ Um ponto de falha único (SPOF) é um componente ou parte de um sistema que, se 
 
 Não faz sentido tentar escalar nada Horizontalmente sem antes ter escalado verticalmente. O ideal é sempre começar com a escalabilidade vertical, garantindo que o servidor tenha recursos suficientes para lidar com a carga de trabalho atual. Depois disso, se a demanda continuar a crescer, pode-se considerar a escalabilidade horizontal, que envolve adicionar mais servidores para distribuir a carga de trabalho.
 
-![Exemplo de escalabilidade horizontal](img/image-1.png)
+![Exemplo de escalabilidade horizontal](NOTES/backend_studies%20(git)/Scalability/img/image-1.png)
 
 ---
 
@@ -26,7 +26,7 @@ A escalabilidade horizontal, ou "scale out", é o processo de adicionar mais ser
 
 A escalabilidade horizontal é uma solução mais robusta e resiliente, pois não depende de um único servidor para funcionar. Se um servidor falhar, os outros servidores podem continuar a operar, garantindo alta disponibilidade do sistema. Além disso, a escalabilidade horizontal permite que o sistema cresça de forma mais flexível, adicionando ou removendo servidores conforme necessário para atender à demanda.
 
-![Exemplo de escalabilidade horizontal](img/image-2.png)
+![Exemplo de escalabilidade horizontal](NOTES/backend_studies%20(git)/Scalability/img/image-2.png)
 
 No entanto, a escalabilidade horizontal pode ser mais complexa de implementar e gerenciar, pois envolve a coordenação entre vários servidores e a distribuição da carga de trabalho. É necessário configurar um balanceador de carga (load balancer) para distribuir as solicitações entre os servidores de forma eficiente, garantindo que nenhum servidor fique sobrecarregado enquanto outros estão ociosos.
 
@@ -42,7 +42,7 @@ Existem diferentes tipos de balanceadores de carga, cada um com suas próprias c
 
 - `HARDWARE`: Balanceadores de carga físicos, que são dispositivos dedicados projetados para distribuir o tráfego de rede entre vários servidores. Eles oferecem alto desempenho e confiabilidade, mas podem ser caros e difíceis de escalar.
 
-![Exemplo de balanceador de carga de hardware](img/image-3.png)
+![Exemplo de balanceador de carga de hardware](NOTES/backend_studies%20(git)/Scalability/img/image-3.png)
 
 ---
 
@@ -50,7 +50,7 @@ Existem diferentes tipos de balanceadores de carga, cada um com suas próprias c
 
 Abaixo estão alguns exemplos de balanceadores de carga de software populares:
 
-![Exemplo de balanceador de carga de software](img/image-4.png)
+![Exemplo de balanceador de carga de software](NOTES/backend_studies%20(git)/Scalability/img/image-4.png)
 
 - *NGINX*: Um servidor web e balanceador de carga de código aberto, conhecido por seu alto desempenho e capacidade de lidar com grandes volumes de tráfego. O NGINX pode ser configurado para distribuir solicitações entre vários servidores, garantindo alta disponibilidade e escalabilidade.
 
@@ -62,7 +62,7 @@ Abaixo estão alguns exemplos de balanceadores de carga de software populares:
 
 - `CLOUD`: Balanceadores de carga baseados em nuvem, que são fornecidos por provedores de serviços em nuvem, como AWS, Azure e Google Cloud. Eles oferecem escalabilidade automática, alta disponibilidade e integração com outros serviços em nuvem, tornando-os ideais para aplicativos modernos e distribuídos.
 
-![Exemplo de balanceador de carga baseado em nuvem](img/image-5.png)
+![Exemplo de balanceador de carga baseado em nuvem](NOTES/backend_studies%20(git)/Scalability/img/image-5.png)
 
 - *AWS ALB (Application Load Balancer)*: Um balanceador de carga gerenciado pela Amazon Web Services, projetado para distribuir tráfego de aplicativos entre várias instâncias EC2. O AWS ALB oferece recursos avançados, como roteamento baseado em conteúdo e suporte a protocolos modernos, como HTTP/2 e WebSocket.
 
@@ -128,7 +128,7 @@ Casos de uso:
 
 Baseado no protocolo UDP, o balanceador de carga de camada 4 é ideal para aplicativos que exigem comunicação rápida e eficiente, mas não precisam de recursos avançados de balanceamento de carga em nível de aplicação. Ele é uma escolha sólida para aplicativos que exigem alta performance e baixa latência, por que opera diretamente na camada de transporte, conectando via IP e porta, sem a necessidade de analisar o conteúdo das solicitações.
 
-![Modelo Load Balancer L4](img/image-6.png)
+![Modelo Load Balancer L4](NOTES/backend_studies%20(git)/Scalability/img/image-6.png)
 
 ---
 
@@ -152,7 +152,7 @@ Casos de uso:
 
 - App mobile: O balanceador de carga de camada 7 é ideal para aplicativos móveis que exigem recursos avançados de balanceamento de carga em nível de aplicação, como roteamento baseado em conteúdo e suporte a protocolos modernos, como HTTP/2 e WebSocket.
 
-![Modelo Load Balancer L7](img/image-7.png)
+![Modelo Load Balancer L7](NOTES/backend_studies%20(git)/Scalability/img/image-7.png)
 
 ---
 
