@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Markdown Render</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 25px;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content"></div>
+    <script>
+        function showError(message) {
+            document.getElementById("content").innerText = message;
+            console.error(message);
+        }
+
+        function resolveRelativeUrl(basePath, url) {
+            if (!url) return url;
+            if (/^(https?:|data:|mailto:|#|\/)/i.test(url)) return url;
+            return basePath + url;
+        }
+
+        function normalizeAssetPaths(basePath) {
+            const content = document.getElementById("content");
+
+            content.querySelectorAll("img[src]").forEach(img => {
+                img.src = resolveRelativeUrl(basePath, img.getAttribute("src"));
+            });
+
+            content.querySelectorAll("a[href]").forEach(link => {
+                link.href = resolveRelativeUrl(basePath, link.getAttribute("href"));
+            });
+        }
+
+        function renderMarkdown(text, markdownPath) {
+            const lastSlashIndex = markdownPath.lastIndexOf("/");
+            const basePath = lastSlashIndex >= 0 ? markdownPath.slice(0, lastSlashIndex + 1) : "./";
+
+            if (window.marked && typeof marked.parse === "function") {
+                document.getElementById("content").innerHTML = marked.parse(text);
+                normalizeAssetPaths(basePath);
+            } else {
+                document.getElementById("content").innerText = text;
+            }
+
+            if (window.mermaid && typeof mermaid.init === "function") {
+                mermaid.init(undefined, document.querySelectorAll(".language-mermaid"));
+            }
+        }
+
+        if (window.mermaid && typeof mermaid.initialize === "function") {
+            mermaid.initialize({ startOnLoad: true });
+        }
+
+        // Caminho padrão do arquivo Markdown a partir de "NOTES" (root)
+        // Replace spaces with %20 for URL encoding
+        // Example: "./Authentication/7%20auth%20concepts.md"
+        const defaultMarkdownPath = ".Network\Networking%20Concepts.md";
+        const params = new URLSearchParams(window.location.search);
+        const markdownPath = params.get("file") || defaultMarkdownPath;
+
+        document.getElementById("content").innerText = `Carregando Markdown: ${markdownPath}`;
+
+        fetch(markdownPath)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Falha ao carregar: ${response.status} ${response.statusText}`);
+                }
+                return response.text();
+            })
+            .then(text => renderMarkdown(text, markdownPath))
+            .catch(error => showError("Erro ao carregar o Markdown: " + error.message));
+    </script>
+</body>
+
+</html>
+
+<!-- rodar no terminal: -->
+<!-- py -m http.server 8000 -->
+<!-- depois acessar: -->
+<!-- http://localhost:8000/md_render.html -->
