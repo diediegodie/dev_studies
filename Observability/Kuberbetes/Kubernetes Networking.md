@@ -11,7 +11,7 @@ Como o Kubernetes é construído sobre o Linux, ele aproveita a pilha de rede su
 ![alt text](img/image.png)
 
 ## Kubernetes Networking Components (Componentes de Rede do Kubernetes)
-
+```
 **Node** = Uma máquina física ou virtual que executa o Kubernetes e hospeda os pods.
     - **rootns**: O namespace de rede raiz do nó, onde os processos do sistema e os serviços de rede do nó são executados. Ele é responsável por gerenciar a pilha de rede do nó, incluindo interfaces de rede, roteamento e regras de firewall. Por padrão, é aqui que todas as interfaces de rede do nó são criadas.
         - *veth*: A interface de rede principal do nó, usada para comunicação com outros nós e redes externas.
@@ -25,6 +25,7 @@ Como o Kubernetes é construído sobre o Linux, ele aproveita a pilha de rede su
                 - *routing*: A tabela de roteamento do contêiner determina como os pacotes são encaminhados para outros contêineres e serviços.
                 - *iptables*: Para gerenciar o tráfego de rede e garantir a comunicação entre os contêineres e serviços.
                 - *conntrack*: Para rastrear conexões de rede e garantir que as comunicações sejam mantidas corretamente.
+```
 
 ![alt text](img/image-1.png)
 
